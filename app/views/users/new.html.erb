@@ -1,3 +1,5 @@
+<% provide(:titie, 'Sign up') %>
+
 <div class="auth-page">
   <div class="container page">
     <div class="row">
@@ -7,22 +9,28 @@
           <a href="/login">Have an account?</a>
         </p>
 
-        <ul class="error-messages">
-          <li>That email is already taken</li>
-        </ul>
+        <%= render 'shared/error_messages' %>
 
-        <form>
+        <%= form_with(model: @user, url: '/register', method: :post, local: true) do |f| %>
           <fieldset class="form-group">
-            <input class="form-control form-control-lg" type="text" placeholder="Username" />
+            <%= f.text_field :username, :placeholder => "Username", class: "form-control form-control-lg" %>
           </fieldset>
+
           <fieldset class="form-group">
-            <input class="form-control form-control-lg" type="text" placeholder="Email" />
-          </fieldset>
+            <%= f.email_field :email, :placeholder => "Email", class: "form-control form-control-lg" %>
+          </fieldset>    
+    
           <fieldset class="form-group">
-            <input class="form-control form-control-lg" type="password" placeholder="Password" />
+            <%= f.password_field :password, :placeholder => "Password", class: "form-control form-control-lg" %>
           </fieldset>
-          <button class="btn btn-lg btn-primary pull-xs-right">Sign up</button>
-        </form>
+
+          <fieldset class="form-group">
+            <%= f.password_field :password_confirmation, :placeholder => "Confirmation", class: "form-control form-control-lg" %>
+          </fieldset>
+          
+          <%= f.submit "Sign up", class: "btn btn-lg btn-primary pull-xs-right" %>
+        <% end %>
+
       </div>
     </div>
   </div>
