@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/conduit
+    ports:
+      - 3000:3000
+    environment:
+      TZ: Asia/Tokyo
+    stdin_open: true
+    tty: true
+
+volumes:
+  data-volume:
