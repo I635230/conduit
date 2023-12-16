@@ -10,7 +10,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to "/profile/#{@user.username}" # TODO: rails routesで確認したときにprefixがないpathはこう書くしかない？
+      reset_session
+      log_in @user
+      redirect_to profile_url(@user.username)
     else
       render 'new', status: :unprocessable_entity
     end

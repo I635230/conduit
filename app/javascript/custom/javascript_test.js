@@ -1,0 +1,1 @@
+console.log("JavaScriptはちゃんと動作している")

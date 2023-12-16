@@ -16,10 +16,17 @@
     />
     <!-- Import the custom Bootstrap 4 theme from our hosted CDN -->
     <link rel="stylesheet" href="//demo.productionready.io/main.css" />
+    <%= javascript_importmap_tags %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <% if logged_in? %>
+      <%= render 'layouts/header_with_login' %>
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
     <div class="container">
       <%= yield %>
     </div>
