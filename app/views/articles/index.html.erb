@@ -1,5 +1,42 @@
-<h2>Article一覧</h2>
-<% @articles.each do |article| %>
-  <li><%= link_to article.title, article_path(article.title) %></li>
-<% end %>
-<%= will_paginate %>
+<div class="home-page">
+  <div class="banner">
+    <div class="container">
+      <h1 class="logo-font">conduit</h1>
+      <p>A place to share your knowledge.</p>
+    </div>
+  </div>
+
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="feed-toggle">
+          <ul class="nav nav-pills outline-active">
+            <li class="nav-item">
+              <a class="nav-link active" href="">Global Feed</a>
+            </li>
+          </ul>
+        </div>
+
+
+        <% @articles.each do |article| %>
+          <div class="article-preview">
+            <div class="article-meta">
+              <a href="/profile/eric-simons"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
+              <div class="info">
+                <%= link_to article.user.username, profile_path(article.user.username), class: "author" %>
+                <span class="date">January 20th</span>
+              </div>
+            </div>
+            <a href=<%= article_path(article.title) %> class="preview-link">
+              <h1><%= article.title %></h1>
+              <p>This is the description for the post.</p>
+              <span>Read more...</span>
+            </a>
+          </div>
+        <% end %>
+
+        <%= will_paginate %>
+
+    </div>
+  </div>
+</div>

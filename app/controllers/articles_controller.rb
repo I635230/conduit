@@ -6,4 +6,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find_by(title: params[:title])
   end
+
+  def edit
+  end
 end
