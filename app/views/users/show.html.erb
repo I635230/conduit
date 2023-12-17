@@ -1,14 +1,59 @@
-<h1><%= @user.username %></h1>
-<p><%= @user.email %></p>
+<% provide(:title, @user.username) %>
 
-<div class="col-md-8">
-<% if @user.articles.any? %>
-  <h3>Articles (<%= @user.articles.count %>)</h3>
-    <% @articles.each do |article| %>
-      <ol class="articles">
-        <%= link_to article.title, article_path(article.title) %>
-      </ol>
-    <% end %>
-  <%= will_paginate @articles %>
-<% end %>
+<div class="profile-page">
+  <div class="user-info">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-10 offset-md-1">
+          <img src="http://i.imgur.com/Qr71crq.jpg" class="user-img" />
+          <h4><%= @user.username %></h4>
+          <p>
+            Cofounder @GoThinkster, lived in Aol's HQ for a few months, kinda looks like Peeta from
+            the Hunger Games
+          </p>
+          <button class="btn btn-sm btn-outline-secondary action-btn">
+            <i class="ion-gear-a"></i>
+            &nbsp; Edit Profile Settings
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-10 offset-md-1">
+        <div class="articles-toggle">
+          <ul class="nav nav-pills outline-active">
+            <li class="nav-item">
+              <a class="nav-link active" href="">My Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">Favorited Articles</a>
+            </li>
+          </ul>
+        </div>
+
+        <% @articles.each do |article| %>
+          <div class="article-preview">
+            <div class="article-meta">            
+              <a href="/profile/eric-simons"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
+              <div class="info">
+                <%= link_to article.user.username, profile_path(article.user.username) %>
+                <span class="date">January 20th</span>
+              </div>
+            </div>
+            <a href=<%= article_path(article.title) %> class="preview-link">
+              <h1><%= article.title %></h1>
+              <p>This is the description for the post.</p>
+              <span>Read more...</span>
+            </a>
+          </div>
+        <% end %>
+
+        <%= will_paginate @articles %>
+
+      </div>
+    </div>
+  </div>
 </div>
