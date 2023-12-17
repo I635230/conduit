@@ -12,6 +12,14 @@ class UserTest < ActiveSupport::TestCase
     test "適切な値でuserがvalidになる" do
       assert @user.valid?
     end
+
+    test "userをdestroyすると、articleもdestroyされる" do
+      @user.save
+      @user.articles.create!(content: "Lorem ipsum")
+      assert_difference 'Article.count', -1 do
+        @user.destroy
+      end
+    end  
   end
 
   ###############################################

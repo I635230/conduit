@@ -1,0 +1,7 @@
+<li id="article>"> <!- 後で変更 ->
+  <span class="user"><%= link_to @article.user.username, profile_path(@article.user.username) %></span>
+  <span class="content"><%= @article.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(@article.created_at) %> ago.
+  </span>
+</li>
