@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/article/:title', to: 'articles#show', as: 'article'
-  get '/edit/:title', to: 'articles#edit', as: 'edit_article'
+  get '/editor', to: 'articles#new'
+  post '/article', to: 'articles#create'
+  get '/editor/:title', to: 'articles#edit', as: 'edit_article'
 end

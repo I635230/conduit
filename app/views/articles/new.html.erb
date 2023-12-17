@@ -1,0 +1,27 @@
+<div class="editor-page">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-10 offset-md-1 col-xs-12">
+      
+        <ul class="error-messages">
+          <li>That title is required</li>
+        </ul>
+
+        <%= form_with(scope: :article, url: '/article', method: :post, local: true) do |f| %>
+          <fieldset class="form-group">
+            <%= f.text_field :title, :placeholder => "Article Title", class: "form-control form-control-lg" %>
+          </fieldset>
+          <fieldset class="form-group">
+            <%= f.text_field :slug, :placeholder => "What's this article about?", class: "form-control" %>
+          </fieldset>
+          <fieldset class="form-group">
+            <%= f.text_area :content, :placeholder => "Write your article (in markdown)", rows: "8", class: "form-control" %>
+          </fieldset>
+
+          <%= f.submit "Publish Article", class: "btn btn-lg pull-xs-right btn-primary" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

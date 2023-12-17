@@ -15,7 +15,7 @@ class UserTest < ActiveSupport::TestCase
 
     test "userをdestroyすると、articleもdestroyされる" do
       @user.save
-      @user.articles.create!(content: "Lorem ipsum")
+      @user.articles.create!(content: "Lorem ipsum", title: "title", slug: "slug")
       assert_difference 'Article.count', -1 do
         @user.destroy
       end

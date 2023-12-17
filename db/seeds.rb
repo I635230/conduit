@@ -19,6 +19,6 @@ end
 users = User.order(:created_at).take(6)
 20.times do |i|
   users.each.with_index(1) do |user, j|
-    user.articles.create!(title: "article#{j}-#{i+1}", content: Faker::Lorem.sentence(word_count: 30))
+    user.articles.create!(title: "article#{j}-#{i+1}", content: Faker::Lorem.sentence(word_count: 30), slug: "slug#{j}-#{i+1}")
   end
 end
