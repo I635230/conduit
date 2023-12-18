@@ -10,14 +10,26 @@ class ArticlesPostTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "invalidな情報でpostできない" do # TODO: 先にログインのテストヘルパーを作成
-    # assert_template 'article/new'
-    # assert_no_difference 'Article.count' do
-    #   post article_path, params: { article: { title: "", slug: "", content: ""} }
-    # end
-    # assert_template 'article/new'
+  test "ログインせずにpostできない" do
+  end
+
+  test "invalidな情報でpostできない" do
+    log_in_as(@user)
+    get editor_path
+    assert_template 'articles/new'
+    assert_no_difference 'Article.count' do
+      post create_article_path, params: { article: { title: "", description: "", content: ""} }
+    end
+    assert_template 'articles/new'
   end
 
   test "validな情報でpostできる" do
+    log_in_as(@user)
+    get editor_path
+    assert_difference 'Article.count', 1 do
+      post create_article_path, params: { article: { title: "title", description: "description", content: "content"} }
+    end
+    assert_redirected_to profile_url(@user.username)
+    follow_redirect!
   end
 end

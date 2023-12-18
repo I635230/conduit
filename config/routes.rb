@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/article/:slug', to: 'articles#show', as: 'article'
   get '/editor', to: 'articles#new'
-  post '/article', to: 'articles#create'
+  post '/article', to: 'articles#create', as: 'create_article'
   get '/editor/:slug', to: 'articles#edit', as: 'edit_article'
   patch '/article/:slug', to: 'articles#update'
+  delete '/article/:slug', to: 'articles#destroy', as: 'destroy_article'
 end

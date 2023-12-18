@@ -15,9 +15,9 @@
               <i class="ion-edit"></i> Edit Article
             </button>
           </a>
-          <button class="btn btn-sm btn-outline-danger">
-            <i class="ion-trash-a"></i> Delete Article
-          </button>
+          <i class="ion-trash-a"></i>
+          <%= link_to "Delete Article", destroy_article_path(@article.slug), 
+          data: { "turbo-method": :delete }, class: "btn btn-sm btn-outline-danger" %>
         <% end %>
       </div>
     </div>

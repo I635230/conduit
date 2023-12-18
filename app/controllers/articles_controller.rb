@@ -40,6 +40,11 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def destroy
+    Article.find_by(slug: params[:slug]).destroy
+    redirect_to profile_url(current_user.username), status: :see_other
+  end
+
   private
 
     def article_params
