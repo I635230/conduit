@@ -1,7 +1,59 @@
-<li id="article>"> <!- 後で変更 ->
-  <span class="user"><%= link_to @article.user.username, profile_path(@article.user.username) %></span>
-  <span class="content"><%= @article.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(@article.created_at) %> ago.
-  </span>
-</li>
+<div class="article-page">
+  <div class="banner">
+    <div class="container">
+      <h1><%= @article.title %></h1>
+
+      <div class="article-meta">
+        <a href="/profile/eric-simons"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
+        <div class="info">
+          <%= link_to @article.user.username, profile_path(@article.user.username), class: "author" %>
+          <span class="date">January 20th</span>
+        </div>
+        <% if current_user == @article.user %>
+          <a href=<%= edit_article_path(@article.slug) %>>
+            <button class="btn btn-sm btn-outline-secondary">
+              <i class="ion-edit"></i> Edit Article
+            </button>
+          </a>
+          <button class="btn btn-sm btn-outline-danger">
+            <i class="ion-trash-a"></i> Delete Article
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container page">
+    <div class="row article-content">
+      <div class="col-md-12">
+        <p>
+          <%= @article.description %>
+        </p>
+        <h2 id="introducing-ionic"><%= @article.title %></h2>
+        <p><%= @article.content %></p>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="article-actions">
+      <div class="article-meta">
+        <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
+        <div class="info">
+          <%= link_to @article.user.username, profile_path(@article.user.username, class: "author") %>
+          <span class="date">January 20th</span>
+        </div>
+
+        <% if current_user == @article.user %>
+          <button class="btn btn-sm btn-outline-secondary">
+            <i class="ion-edit"></i> Edit Article
+          </button>
+          <button class="btn btn-sm btn-outline-danger">
+            <i class="ion-trash-a"></i> Delete Article
+          </button>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

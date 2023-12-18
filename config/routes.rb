@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/article/:title', to: 'articles#show', as: 'article'
+  get '/article/:slug', to: 'articles#show', as: 'article'
   get '/editor', to: 'articles#new'
   post '/article', to: 'articles#create'
-  get '/editor/:title', to: 'articles#edit', as: 'edit_article'
+  get '/editor/:slug', to: 'articles#edit', as: 'edit_article'
+  patch '/article/:slug', to: 'articles#update'
 end

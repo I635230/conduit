@@ -3,16 +3,25 @@
     <div class="row">
       <div class="col-md-10 offset-md-1 col-xs-12">
       
-        <ul class="error-messages">
-          <li>That title is required</li>
-        </ul>
+          <% if @article.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-danger">
+              The form contains <%= pluralize(@article.errors.count, "error") %>.
+            </div>
+            <ul class="error-messages">
+            <% @article.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
 
         <%= form_with(scope: :article, url: '/article', method: :post, local: true) do |f| %>
           <fieldset class="form-group">
             <%= f.text_field :title, :placeholder => "Article Title", class: "form-control form-control-lg" %>
           </fieldset>
           <fieldset class="form-group">
-            <%= f.text_field :slug, :placeholder => "What's this article about?", class: "form-control" %>
+            <%= f.text_field :description, :placeholder => "What's this article about?", class: "form-control" %>
           </fieldset>
           <fieldset class="form-group">
             <%= f.text_area :content, :placeholder => "Write your article (in markdown)", rows: "8", class: "form-control" %>

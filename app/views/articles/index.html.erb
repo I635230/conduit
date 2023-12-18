@@ -27,9 +27,9 @@
                 <span class="date">January 20th</span>
               </div>
             </div>
-            <a href=<%= article_path(article.title) %> class="preview-link">
+            <a href=<%= article_path(article.slug) %> class="preview-link">
               <h1><%= article.title %></h1>
-              <p>This is the description for the post.</p>
+              <p><%= article.description %></p>
               <span>Read more...</span>
             </a>
           </div>
