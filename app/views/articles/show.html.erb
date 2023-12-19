@@ -1,3 +1,5 @@
+<% provide(:title, @article.title) %>
+
 <div class="article-page">
   <div class="banner">
     <div class="container">
@@ -15,9 +17,10 @@
               <i class="ion-edit"></i> Edit Article
             </button>
           </a>
-          <i class="ion-trash-a"></i>
-          <%= link_to "Delete Article", destroy_article_path(@article.slug), 
-          data: { "turbo-method": :delete }, class: "btn btn-sm btn-outline-danger" %>
+          <%= link_to destroy_article_path(@article.slug), 
+                                        data: { "turbo-method": :delete }, class: "btn btn-sm btn-outline-danger" do %>
+            <i class="ion-trash-a"></i>Delete Article
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -45,12 +48,15 @@
         </div>
 
         <% if current_user == @article.user %>
-          <button class="btn btn-sm btn-outline-secondary">
-            <i class="ion-edit"></i> Edit Article
-          </button>
-          <button class="btn btn-sm btn-outline-danger">
-            <i class="ion-trash-a"></i> Delete Article
-          </button>
+          <a href=<%= edit_article_path(@article.slug) %>>
+            <button class="btn btn-sm btn-outline-secondary">
+              <i class="ion-edit"></i> Edit Article
+            </button>
+          </a>
+          <%= link_to destroy_article_path(@article.slug), 
+                                        data: { "turbo-method": :delete }, class: "btn btn-sm btn-outline-danger" do %>
+            <i class="ion-trash-a"></i>Delete Article
+          <% end %>
         <% end %>
       </div>
     </div>
