@@ -6,6 +6,12 @@ class ArticlesDeleteTest < ActionDispatch::IntegrationTest
     @article = @user.articles.create(title: "title dayo", description: "description", slug: "title-dayo", content: "content")
   end
 
+  test "非ログイン時にeditor/:slugにアクセスできない" do
+    get edit_article_path(@article.slug)
+    assert_response :see_other
+    assert_redirected_to login_url
+  end
+
   test "ログインせずにdeleteできない" do
   end
 

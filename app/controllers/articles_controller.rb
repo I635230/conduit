@@ -28,7 +28,11 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find_by(slug: params[:slug])
+    if logged_in?
+      @article = Article.find_by(slug: params[:slug])
+    else
+      redirect_to login_url, status: :see_other
+    end
   end
 
   def update
