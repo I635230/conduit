@@ -19,7 +19,11 @@ class UserTest < ActiveSupport::TestCase
       assert_difference 'Article.count', -1 do
         @user.destroy
       end
-    end  
+    end
+
+    test "authenticated?はremember_digestがnilのときに正常にfalseを返す(エラーにならない)" do
+      assert_not @user.authenticated?('')
+    end
   end
 
   ###############################################
