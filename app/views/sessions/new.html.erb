@@ -25,8 +25,10 @@
           </fieldset>
 
           <%= f.label :remember_me, class: "checkbox inline" do %>
-            <%= f.check_box :remember_me %>
-            <span>Remember me on this computer</span>
+            <div class="inner-checkbox">
+              <%= f.check_box :remember_me %>
+              <span>Remember me on this computer</span>
+            </div>
           <% end %>
     
           <%= f.submit "Sign in", class: "btn btn-lg btn-primary pull-xs-right" %>

@@ -1,11 +1,22 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 .checkbox {
-  background-color: red;
   margin-top: -10px;
   margin-bottom: 10px;
+
+  .inner-checkbox {
+    display: flex; 
+    align-items: center;
+    height: 30px; 
+    margin-left: 5px; 
+
+    input {
+      vertical-align: middle;
+      margin-left: 10px; 
+      transform: scale(1.2);
+    }
+  }
+
   span {
+    margin-top: 3px; 
     margin-left: 20px;
     font-weight: normal;
   }
