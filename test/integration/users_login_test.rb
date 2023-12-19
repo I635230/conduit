@@ -15,8 +15,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     assert_template 'sessions/new'
     assert_not flash.empty?
-    # get root_path # まだroot_pathの設定をしていないので、後で
-    # assert flash.empty?
+    get root_path
+    assert flash.empty?
   end
 
   test "validな情報でログインできる & ログアウトできる" do 
@@ -35,7 +35,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     delete logout_path
     assert_not is_logged_in?
     assert_response :see_other
-    assert_redirected_to login_url
+    assert_redirected_to root_url
 
     delete logout_path # 2番目のウインドウでログアウトをクリックするシミュレート
 
