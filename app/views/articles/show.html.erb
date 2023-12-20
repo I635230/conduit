@@ -17,7 +17,7 @@
               <i class="ion-edit"></i> Edit Article
             </button>
           </a>
-          <%= link_to destroy_article_path(@article.slug), 
+          <%= link_to article_path(@article.slug), 
                                         data: { "turbo-method": :delete }, class: "btn btn-sm btn-outline-danger" do %>
             <i class="ion-trash-a"></i>Delete Article
           <% end %>
@@ -49,7 +49,7 @@
               <i class="ion-edit"></i> Edit Article
             </button>
           </a>
-          <%= link_to destroy_article_path(@article.slug), 
+          <%= link_to article_path(@article.slug), 
                                         data: { "turbo-method": :delete }, class: "btn btn-sm btn-outline-danger" do %>
             <i class="ion-trash-a"></i>Delete Article
           <% end %>

@@ -18,7 +18,7 @@
           </div>
         <% end %>
 
-        <%= form_with(scope: :article, url: '/article', method: :post, local: true) do |f| %>
+        <%= form_with(model: @article) do |f| %>
           <fieldset class="form-group">
             <%= f.text_field :title, :placeholder => "Article Title", class: "form-control form-control-lg" %>
           </fieldset>

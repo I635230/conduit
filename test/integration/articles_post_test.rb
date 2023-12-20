@@ -6,7 +6,7 @@ class ArticlesPostTest < ActionDispatch::IntegrationTest
   end
 
   test "ログインせずにeditorページにアクセスすると、login_urlにリダイレクトされる" do
-    get editor_path
+    get new_article_path
     assert_redirected_to login_url
   end
 
@@ -15,19 +15,19 @@ class ArticlesPostTest < ActionDispatch::IntegrationTest
 
   test "invalidな情報でpostできない" do
     log_in_as(@user)
-    get editor_path
+    get new_article_path
     assert_template 'articles/new'
     assert_no_difference 'Article.count' do
-      post create_article_path, params: { article: { title: "", description: "", content: ""} }
+      post articles_path, params: { article: { title: "", description: "", content: ""} }
     end
     assert_template 'articles/new'
   end
 
   test "validな情報でpostできる" do
     log_in_as(@user)
-    get editor_path
+    get new_article_path
     assert_difference 'Article.count', 1 do
-      post create_article_path, params: { article: { title: "title", description: "description", content: "content"} }
+      post articles_path, params: { article: { title: "title", description: "description", content: "content"} }
     end
     assert_redirected_to profile_url(@user.username)
     follow_redirect!
