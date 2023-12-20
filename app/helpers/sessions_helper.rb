@@ -26,6 +26,10 @@ module SessionsHelper
     end
   end
 
+  def current_user?(user)
+    user && user == current_user
+  end
+
   def logged_in?
     !current_user.nil?
   end
@@ -41,4 +45,14 @@ module SessionsHelper
     reset_session
     @current_user = nil
   end
+
+  private
+
+    # beforeフィルタ用
+
+    def logged_in_user
+      unless logged_in?
+        redirect_to login_url, status: :see_other
+      end
+    end
 end

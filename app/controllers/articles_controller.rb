@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
+
   def index
     @articles = Article.paginate(page: params[:page], per_page: 10)
   end
@@ -9,11 +13,6 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
-    if logged_in?
-      # render
-    else 
-      redirect_to login_url, status: :see_other
-    end
   end
 
   def create
@@ -28,11 +27,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    if logged_in?
-      @article = Article.find_by(slug: params[:slug])
-    else
-      redirect_to login_url, status: :see_other
-    end
+    @article = Article.find_by(slug: params[:slug])
   end
 
   def update
@@ -53,5 +48,13 @@ class ArticlesController < ApplicationController
 
     def article_params
       params.require(:article).permit(:title, :slug, :description, :content)
+    end
+
+    # beforeフィルタ用
+
+    def correct_user
+      @article = Article.find_by(slug: params[:slug])
+      @user = @article.user
+      redirect_to(root_url, status: :see_other) unless current_user?(@user)
     end
 end
