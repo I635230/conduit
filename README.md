@@ -39,10 +39,10 @@ Dockerで作成したRuby on Railsアプリとなります。
 - 記事へのコメント
 
 ## 起動方法
-こちらのリポジトリを`git clone`で取得してから、以下のコマンドを実行してください。
+本リポジトリを`git clone`で取得してから、以下のコマンドを実行してください。
 
 ```
 docker-compose up -d
 ```
 
-そして、https://localhost:3000にアクセスしてください。
+そして、[https://localhost:3000](https://localhost:3000)にアクセスしてください。
