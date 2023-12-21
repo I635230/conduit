@@ -43,5 +43,6 @@ Dockerで作成したRuby on Railsアプリとなります。
 
 ```
 docker-compose up -d
-docker-compose exec web bash
 ```
+
+そして、https://localhost:3000にアクセスしてください。
