@@ -5,11 +5,11 @@ class ArticlesPostTest < ActionDispatch::IntegrationTest
     @user = users(:michael)
   end
 
-  # test "ログインせずにpostできない" do #articlesメソッドが見つからないらしい。なんで？
-  #   assert_no_difference 'Article.count' do
-  #     post articles_path, params: { article: { title: "aaa", description: "aa", content: "a"} }
-  #   end
-  # end
+  test "ログインせずにpostできない" do
+    assert_no_difference 'Article.count' do
+      post articles_path, params: { article: { title: "aaa", description: "aa", content: "a"} }
+    end
+  end
 
   test "invalidな情報でpostできない" do
     log_in_as(@user)
