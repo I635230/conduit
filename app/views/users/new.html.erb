@@ -11,7 +11,7 @@
 
         <%= render 'shared/error_messages' %>
 
-        <%= form_with(model: @user, url: '/register', method: :post, local: true) do |f| %>
+        <%= form_with(model: @user, url: register_path, method: :post, local: true) do |f| %>
           <fieldset class="form-group">
             <%= f.text_field :username, :placeholder => "Username", class: "form-control form-control-lg" %>
           </fieldset>

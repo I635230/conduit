@@ -19,9 +19,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     test "非ログイン時にupdateアクションを実行したときにリダイレクトする" do
       patch article_path(@article.slug), params: { article: { title: @article.title, 
-                                                            slug: @article.slug, 
-                                                            description: @article.description, 
-                                                            content: @article.content } }
+                                                              description: @article.description, 
+                                                              content: @article.content } }
       assert_redirected_to login_url
     end
 
@@ -38,10 +37,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       log_in_as(@other_user)
     end
 
-    # test "違うユーザーのログイン時にnewアクションを実行したときにリダイレクトする" do # TODO: new actionってどうやってuserの確認すればいいんだ？
-    #   get new_article_path
-    #   assert_redirected_to root_url
-    # end
+    # TODO: new actionってどうやってuserの確認すればいいんだ？
 
     test "違うユーザーのログイン時にeditアクションを実行したときにリダイレクトする" do
       get edit_article_path(@article.slug)
@@ -50,9 +46,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
 
     test "違うユーザーのログイン時にupdateアクションを実行したときにリダイレクトする" do
       patch article_path(@article.slug), params: { article: { title: @article.title, 
-                                                            slug: @article.slug, 
-                                                            description: @article.description, 
-                                                            content: @article.content } }
+                                                              description: @article.description, 
+                                                              content: @article.content } }
       assert_redirected_to root_url
     end
 

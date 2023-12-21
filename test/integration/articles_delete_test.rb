@@ -6,21 +6,18 @@ class ArticlesDeleteTest < ActionDispatch::IntegrationTest
     @article = @user.articles.create(title: "title dayo", description: "description", slug: "title-dayo", content: "content")
   end
 
-  test "非ログイン時にeditor/:slugにアクセスできない" do
-    get edit_article_path(@article.slug)
-    assert_response :see_other
-    assert_redirected_to login_url
-  end
-
   test "ログインせずにdeleteできない" do
+    assert_no_difference 'Article.count' do
+      delete article_path(@article.slug)
+    end
   end
 
-  test "deleteが成功する" do # testでarticles#destroyのcurrent_userが使えないから、うまくいかない
-    # get article_path(@article.slug)
-    # assert_difference 'Article.count', -1 do
-    #   delete destroy_article_path(@article.slug)
-    # end
-    # assert_response :see_other
-    # assert_redirected_to profile_path(@user.username)
+  test "ログインするとdeleteが成功する" do
+    log_in_as(@user)
+    assert_difference 'Article.count', -1 do
+      delete article_path(@article.slug)
+    end
+    assert_response :see_other
+    assert_redirected_to profile_url(@article.user.username)
   end
 end
