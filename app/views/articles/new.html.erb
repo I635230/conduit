@@ -5,18 +5,7 @@
     <div class="row">
       <div class="col-md-10 offset-md-1 col-xs-12">
       
-          <% if @article.errors.any? %>
-          <div id="error_explanation">
-            <div class="alert alert-danger">
-              The form contains <%= pluralize(@article.errors.count, "error") %>.
-            </div>
-            <ul class="error-messages">
-            <% @article.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
+        <%= render 'shared/article_error_messages' %>
 
         <%= form_with(model: @article) do |f| %>
           <fieldset class="form-group">

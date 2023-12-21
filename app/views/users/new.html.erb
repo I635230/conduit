@@ -9,7 +9,7 @@
           <a href="/login">Have an account?</a>
         </p>
 
-        <%= render 'shared/error_messages' %>
+        <%= render 'shared/user_error_messages' %>
 
         <%= form_with(model: @user, url: register_path, method: :post, local: true) do |f| %>
           <fieldset class="form-group">
