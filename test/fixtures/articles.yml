@@ -1,12 +1,14 @@
 orange:
-  title: "title1 dayo"
+  title: "title1"
+  description: "aaa"
   content: "I just ate an orange!"
-  slug: "title1-dayo"
+  slug: "title1"
   created_at: <%= 10.minutes.ago %>
   user: michael
 
 tau_manifesto:
   title: "title2"
+  description: "bbb"
   content: "Check out the @tauday site by @mhartl: https://tauday.com"
   slug: "title2"
   created_at: <%= 3.years.ago %>
@@ -14,6 +16,7 @@ tau_manifesto:
 
 cat_video:
   title: "title3"
+  description: "ccc"
   content: "Sad cats are sad: https://youtu.be/PKffm2uI4dk"
   slug: "title3"
   created_at: <%= 2.hours.ago %>
@@ -21,7 +24,44 @@ cat_video:
 
 most_recent:
   title: "title4"
+  description: "ddd"
   content: "Writing a short test"
   slug: "title4"
   created_at: <%= Time.zone.now %>
   user: michael
+
+aaa:
+  title: "title5"
+  description: "eee"
+  content: "Writing a short test !"
+  slug: "title5"
+  created_at: <%= 2.hours.ago %>
+  user: michael
+
+bbb:
+  title: "title6"
+  description: "fff"
+  content: "Writing a short test !!"
+  slug: "title6"
+  created_at: <%= 2.hours.ago %>
+  user: michael
+
+<% 30.times do |n| %>
+article_a_<%= n %>:
+  title: <%="title a #{n}"%>
+  description: <%="description a #{n}"%>
+  content: <%="content a #{n}"%>
+  slug: <%="title a #{n}"%>
+  created_at: <%= 2.hours.ago %>
+  user: michael
+<% end %>
+
+<% 30.times do |n| %>
+article_b_<%= n %>:
+  title: <%="title b #{n}"%>
+  description: <%="description b #{n}"%>
+  content: <%="content b #{n}"%>
+  slug: <%="title b #{n}"%>
+  created_at: <%= 2.hours.ago %>
+  user: archer
+<% end %>

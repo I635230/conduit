@@ -6,11 +6,13 @@
       <h1><%= @article.title %></h1>
 
       <div class="article-meta">
-        <a href="/profile/eric-simons"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
-        <div class="info">
-          <%= link_to @article.user.username, profile_path(@article.user.username), class: "author" %>
-          <span class="date">January 20th</span>
-        </div>
+        <%= link_to profile_path(@article.user.username), class: "author" do %>
+          <img src="http://i.imgur.com/Qr71crq.jpg" />
+          <div class="info">
+            <%= @article.user.username %>
+            <span class="date">January 20th</span>
+          </div>
+        <% end %>
         <% if current_user == @article.user %>
           <a href=<%= edit_article_path(@article.slug) %>>
             <button class="btn btn-sm btn-outline-secondary">
@@ -37,12 +39,13 @@
 
     <div class="article-actions">
       <div class="article-meta">
-        <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
-        <div class="info">
-          <%= link_to @article.user.username, profile_path(@article.user.username, class: "author") %>
-          <span class="date">January 20th</span>
-        </div>
-
+        <%= link_to profile_path(@article.user.username), class: "author" do %>
+          <img src="http://i.imgur.com/Qr71crq.jpg" />
+          <div class="info">
+            <%= @article.user.username %>
+            <span class="date">January 20th</span>
+          </div>
+        <% end %>
         <% if current_user == @article.user %>
           <a href=<%= edit_article_path(@article.slug) %>>
             <button class="btn btn-sm btn-outline-secondary">

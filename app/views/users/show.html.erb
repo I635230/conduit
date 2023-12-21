@@ -29,18 +29,20 @@
 
         <% @articles.each do |article| %>
           <div class="article-preview">
-            <div class="article-meta">            
-              <a href="/profile/eric-simons"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
-              <div class="info">
-                <%= link_to article.user.username, profile_path(article.user.username) %>
-                <span class="date">January 20th</span>
-              </div>
+            <div class="article-meta">
+              <%= link_to profile_path(article.user.username) do %>
+                <img src="http://i.imgur.com/Qr71crq.jpg" />
+                <div class="info">
+                  <%= article.user.username %>
+                  <span class="date">January 20th</span>
+                </div>
+              <% end %>
             </div>
-            <a href=<%= article_path(article.slug) %> class="preview-link">
+            <%= link_to article_path(article.slug), class: "preview-link" do %>
               <h1><%= article.title %></h1>
               <p><%= article.description %></p>
               <span>Read more...</span>
-            </a>
+            <% end %>
           </div>
         <% end %>
 
