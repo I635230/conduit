@@ -38,6 +38,12 @@ class UserTest < ActiveSupport::TestCase
       @user.username = "a" * 5111
       assert_not @user.valid?
     end
+
+    test "既に存在する名前を保存すると、invalidになる" do
+      @user.save
+      @other_user = User.new(username: @user.username, email: "other@example.com", password: "foobar", password_confirmation: "foobar")
+      assert_not @other_user.valid?
+    end
   end
 
   ###############################################
