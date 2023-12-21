@@ -44,6 +44,11 @@ class UserTest < ActiveSupport::TestCase
       @other_user = User.new(username: @user.username, email: "other@example.com", password: "foobar", password_confirmation: "foobar")
       assert_not @other_user.valid?
     end
+
+    test "usernameにドットが含まれると、invalidになる" do
+      @user.username = "Ex. User"
+      assert_not @user.valid?
+    end
   end
 
   ###############################################
