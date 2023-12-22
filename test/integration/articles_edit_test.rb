@@ -21,5 +21,10 @@ class ArticlesEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_article_path(@article.slug)
     assert_template 'articles/edit'
+    patch article_path(@article.slug), params: { article: { title: "title desuyo", 
+                                                            description: "description desuyo", 
+                                                            content: "contet desuyo" } }
+    assert_response :see_other
+    assert_redirected_to article_url(@article.slug)
   end
 end
