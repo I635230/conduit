@@ -42,7 +42,11 @@ Dockerで作成したRuby on Railsアプリとなります。
 本リポジトリを`git clone`で取得してから、以下のコマンドを実行してください。
 
 ```
+docker-compose build
 docker-compose up -d
+docker-compose run web rails db:create
+docker-compose run web rails db:migrate
+docker-compose run web rails db:seed
 ```
 
 そして、[https://localhost:3000](https://localhost:3000)にアクセスしてください。
