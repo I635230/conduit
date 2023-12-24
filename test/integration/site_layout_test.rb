@@ -57,7 +57,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
         assert_select "a[href=?]", article_path(article.slug)
       end
     end
-
   end
 
   class ArticleShowLayoutTest < SiteLayoutTest

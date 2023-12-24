@@ -1,7 +1,6 @@
 require "test_helper"
 
 class UsersRegisterTest < ActionDispatch::IntegrationTest
-
   test "invalidな情報でregisterすると失敗する" do
     get register_path
     assert_no_difference 'User.count' do

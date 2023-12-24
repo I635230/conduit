@@ -15,12 +15,6 @@
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: EnforcedStyle.
 # SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
-Layout/EmptyLinesAroundClassBody:
-  Exclude:
-    - "test/helpers/sessions_helper_test.rb"
-    - "test/integration/site_layout_test.rb"
-    - "test/integration/users_login_test.rb"
-    - "test/integration/users_register_test.rb"
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
