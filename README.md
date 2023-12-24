@@ -20,7 +20,7 @@ Dockerで作成したRuby on Railsアプリとなります。
 
 ## 使用技術
 - Ruby 3.2.2
-  - Ruby on Rails 7.0.4,3
+  - Ruby on Rails 7.0.4.3
   - sqlite3 1.6.1
 
 ## 実装
