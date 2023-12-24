@@ -37,8 +37,6 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       log_in_as(@other_user)
     end
 
-    # TODO: new actionってどうやってuserの確認すればいいんだ？
-
     test "違うユーザーのログイン時にeditアクションを実行したときにリダイレクトする" do
       get edit_article_path(@article.slug)
       assert_redirected_to root_url
