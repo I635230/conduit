@@ -78,9 +78,6 @@ Performance/StringReplacement:
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
-Style/RedundantRegexpEscape:
-  Exclude:
-    - "app/models/user.rb"
 
 # Offense count: 87
 # This cop supports safe autocorrection (--autocorrect).
