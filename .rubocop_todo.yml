@@ -71,10 +71,6 @@ Performance/ConstantRegexp:
 
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
-Performance/StringReplacement:
-  Exclude:
-    - "app/controllers/articles_controller.rb"
-    - "db/seeds.rb"
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).

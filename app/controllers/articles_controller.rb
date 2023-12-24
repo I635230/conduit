@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   def create
     @user = current_user
     @article = @user.articles.build(article_params)
-    @article.slug = @article.title.gsub(" ", "-")
+    @article.slug = @article.title.tr(" ", "-")
     if @article.save
       redirect_to profile_url(@article.user.username)
     else
