@@ -47,7 +47,6 @@ module SessionsHelper
   end
 
   private
-
     # beforeフィルタ用
 
     def logged_in_user
