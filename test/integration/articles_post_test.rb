@@ -7,7 +7,7 @@ class ArticlesPostTest < ActionDispatch::IntegrationTest
 
   test "ログインせずにpostできない" do
     assert_no_difference 'Article.count' do
-      post articles_path, params: { article: { title: "aaa", description: "aa", content: "a"} }
+      post articles_path, params: { article: { title: "aaa", description: "aa", content: "a" } }
     end
   end
 
@@ -16,7 +16,7 @@ class ArticlesPostTest < ActionDispatch::IntegrationTest
     get new_article_path
     assert_template 'articles/new'
     assert_no_difference 'Article.count' do
-      post articles_path, params: { article: { title: "", description: "", content: ""} }
+      post articles_path, params: { article: { title: "", description: "", content: "" } }
     end
     assert_template 'articles/new'
   end

@@ -9,7 +9,7 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get login_path
     assert_template 'sessions/new'
     post login_path, params: { session: { email: "user@invalid",
-                                          password: "invalid"} }
+                                          password: "invalid" } }
     assert_not is_logged_in?
     assert_response :unprocessable_entity
     assert_template 'sessions/new'
