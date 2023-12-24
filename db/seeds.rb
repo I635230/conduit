@@ -7,7 +7,7 @@ User.create!(username:  "sakana",
 # 追加のユーザーをまとめて生成する
 9.times do |n|
   name  = Faker::Name.name.gsub(".", "")
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n + 1}@railstutorial.org"
   password = "password"
   User.create!(username:  name,
                email: email,
@@ -82,8 +82,8 @@ titles = ["The Impact of Climate Change on Global Agriculture",
 users = User.order(:created_at).take(3)
 20.times do |i|
   users.each.with_index(1) do |user, j|
-    title = titles[j+users.length*i].gsub(/[!\#$'()*+,\/:;=?@\[\]]/, "")
+    title = titles[j + users.length * i].gsub(/[!\#$'()*+,\/:;=?@\[\]]/, "")
     user.articles.create!(title: title, slug: title.gsub(" ", "-"),
-                          description: Faker::Lorem.sentence(word_count: 12) , content: Faker::Lorem.sentence(word_count: 100))
+                          description: Faker::Lorem.sentence(word_count: 12), content: Faker::Lorem.sentence(word_count: 100))
   end
 end

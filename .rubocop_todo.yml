@@ -34,15 +34,9 @@ Layout/IndentationConsistency:
 # Configuration parameters: AllowForAlignment, EnforcedStyleForExponentOperator, EnforcedStyleForRationalLiterals.
 # SupportedStylesForExponentOperator: space, no_space
 # SupportedStylesForRationalLiterals: space, no_space
-Layout/SpaceAroundOperators:
-  Exclude:
-    - "db/seeds.rb"
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
-Layout/SpaceBeforeComma:
-  Exclude:
-    - "db/seeds.rb"
 
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
