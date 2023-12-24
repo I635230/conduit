@@ -6,12 +6,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     @article = @user.articles.create(title: "title dayo", slug: "title-dayo", description: "description", content: "content")
   end
 
-  class CommonLayoutTest < SiteLayoutTest 
+  class CommonLayoutTest < SiteLayoutTest
     # paginationがないページで確認する(1がホームへのリンクなので)
 
     test "非ログイン時のヘッダーとフッターのリンク" do
       get login_path
-      assert_template 'sessions/new'
+      assert_template "sessions/new"
       assert_select "a[href=?]", root_path, count: 3
       assert_select "a[href=?]", login_path
       assert_select "a[href=?]", register_path
@@ -30,7 +30,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   class RootLayoutTest < SiteLayoutTest
     test "ホームページのタイトル" do
       get root_path
-      assert_template 'articles/index'
+      assert_template "articles/index"
       assert_select "title", full_title("Home")
     end
 
@@ -51,13 +51,12 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
     test "プロフィールページのリンク" do
       get profile_path(@user.username)
-      assert_select 'nav.pagination'
+      assert_select "nav.pagination"
       @user.articles.paginate(page: 1, per_page: 5).each do |article|
         assert_select "a[href=?]", profile_path(article.user.username)
         assert_select "a[href=?]", article_path(article.slug)
       end
     end
-
   end
 
   class ArticleShowLayoutTest < SiteLayoutTest

@@ -6,25 +6,25 @@ class ArticlesPostTest < ActionDispatch::IntegrationTest
   end
 
   test "ログインせずにpostできない" do
-    assert_no_difference 'Article.count' do
-      post articles_path, params: { article: { title: "aaa", description: "aa", content: "a"} }
+    assert_no_difference "Article.count" do
+      post articles_path, params: { article: { title: "aaa", description: "aa", content: "a" } }
     end
   end
 
   test "invalidな情報でpostできない" do
     log_in_as(@user)
     get new_article_path
-    assert_template 'articles/new'
-    assert_no_difference 'Article.count' do
-      post articles_path, params: { article: { title: "", description: "", content: ""} }
+    assert_template "articles/new"
+    assert_no_difference "Article.count" do
+      post articles_path, params: { article: { title: "", description: "", content: "" } }
     end
-    assert_template 'articles/new'
+    assert_template "articles/new"
   end
 
   test "validな情報でpostできる" do
     log_in_as(@user)
     get new_article_path
-    assert_difference 'Article.count', 1 do
+    assert_difference "Article.count", 1 do
       post articles_path, params: { article: { title: "title", description: "description", content: "content" } }
     end
     assert_redirected_to profile_url(@user.username)

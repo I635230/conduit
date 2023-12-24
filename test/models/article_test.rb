@@ -42,8 +42,8 @@ class ArticleTest < ActiveSupport::TestCase
     @article_same_slug = @user.articles.build(content: "Lorem ipsum2", title: "title2", slug: "title-dayo")
     @article.save
     assert_not @article_same_slug.valid?
-  end  
-  
+  end
+
   test "recentが最初にこなければinvalid" do
     assert_equal articles(:most_recent), Article.first
   end

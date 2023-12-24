@@ -1,5 +1,4 @@
 module SessionsHelper
-
   def log_in(user)
     session[:user_id] = user.id
     session[:session_token] = user.session_token
@@ -10,7 +9,7 @@ module SessionsHelper
     cookies.encrypted.permanent[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
-  
+
   def current_user
     if (user_id = session[:user_id])
       user = User.find_by(id: user_id)
@@ -47,7 +46,6 @@ module SessionsHelper
   end
 
   private
-
     # beforeフィルタ用
 
     def logged_in_user
