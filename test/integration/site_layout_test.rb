@@ -6,7 +6,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     @article = @user.articles.create(title: "title dayo", slug: "title-dayo", description: "description", content: "content")
   end
 
-  class CommonLayoutTest < SiteLayoutTest 
+  class CommonLayoutTest < SiteLayoutTest
     # paginationがないページで確認する(1がホームへのリンクなので)
 
     test "非ログイン時のヘッダーとフッターのリンク" do

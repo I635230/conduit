@@ -18,8 +18,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "非ログイン時にupdateアクションを実行したときにリダイレクトする" do
-      patch article_path(@article.slug), params: { article: { title: @article.title, 
-                                                              description: @article.description, 
+      patch article_path(@article.slug), params: { article: { title: @article.title,
+                                                              description: @article.description,
                                                               content: @article.content } }
       assert_redirected_to login_url
     end
@@ -45,8 +45,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     end
 
     test "違うユーザーのログイン時にupdateアクションを実行したときにリダイレクトする" do
-      patch article_path(@article.slug), params: { article: { title: @article.title, 
-                                                              description: @article.description, 
+      patch article_path(@article.slug), params: { article: { title: @article.title,
+                                                              description: @article.description,
                                                               content: @article.content } }
       assert_redirected_to root_url
     end

@@ -10,7 +10,7 @@ module SessionsHelper
     cookies.encrypted.permanent[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
-  
+
   def current_user
     if (user_id = session[:user_id])
       user = User.find_by(id: user_id)
