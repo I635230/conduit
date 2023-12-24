@@ -24,6 +24,8 @@ AllCops:
     - "tools/rail_inspector/test/fixtures/*"
     - guides/source/debugging_rails_applications.md
     - guides/source/active_support_instrumentation.md
+    - bin/bundle
+    - Guardfile
 
 Performance:
   Exclude:
