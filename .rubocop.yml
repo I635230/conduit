@@ -354,7 +354,7 @@ Performance/StringInclude:
   Enabled: true
 
 Minitest/AssertPredicate:
-  Enabled: true
+  Enabled: false
 
 Minitest/AssertRaisesWithRegexpArgument:
   Enabled: true

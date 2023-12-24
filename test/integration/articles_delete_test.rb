@@ -7,14 +7,14 @@ class ArticlesDeleteTest < ActionDispatch::IntegrationTest
   end
 
   test "ログインせずにdeleteできない" do
-    assert_no_difference 'Article.count' do
+    assert_no_difference "Article.count" do
       delete article_path(@article.slug)
     end
   end
 
   test "ログインするとdeleteが成功する" do
     log_in_as(@user)
-    assert_difference 'Article.count', -1 do
+    assert_difference "Article.count", -1 do
       delete article_path(@article.slug)
     end
     assert_response :see_other

@@ -9,18 +9,18 @@ class ArticlesEditTest < ActionDispatch::IntegrationTest
   test "invalidな情報でedit/updateが失敗する" do
     log_in_as(@user)
     get edit_article_path(@article.slug)
-    assert_template 'articles/edit'
+    assert_template "articles/edit"
     patch article_path(@article.slug), params: { article: { title: "",
                                                             description: "",
                                                             content: "" } }
     assert_response :unprocessable_entity
-    assert_template 'articles/edit'
+    assert_template "articles/edit"
   end
 
   test "validな情報でedit/updateが成功する" do
     log_in_as(@user)
     get edit_article_path(@article.slug)
-    assert_template 'articles/edit'
+    assert_template "articles/edit"
     patch article_path(@article.slug), params: { article: { title: "title desuyo",
                                                             description: "description desuyo",
                                                             content: "contet desuyo" } }

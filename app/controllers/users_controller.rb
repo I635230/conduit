@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to profile_url(@user.username)
     else
-      render 'new', status: :unprocessable_entity
+      render "new", status: :unprocessable_entity
     end
   end
 
